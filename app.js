@@ -9,6 +9,9 @@ const taskRoutes = require("./routes/taskRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const cookieParser = require("cookie-parser");
 
+app.use(cors()); 
+
+
 const allowedOrigins = [`https://taskfrontend-pokk.onrender.com/`];
 app.use(
   cors({
