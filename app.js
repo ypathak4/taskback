@@ -9,8 +9,7 @@ const taskRoutes = require("./routes/taskRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const cookieParser = require("cookie-parser");
 
-
-const allowedOrigins = [`https://taskfrontend-gilt.vercel.app/`];
+const allowedOrigins = [`https://taskfrontend-pokk.onrender.com/`];
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -21,7 +20,7 @@ app.use(
       }
     },
     methods: "GET, POST, PUT, DELETE, PATCH",
-    credentials: true, 
+    credentials: true,
   })
 );
 
@@ -30,10 +29,9 @@ app.use(cookieParser());
 
 const mongoUrl = process.env.MONGO_URI;
 
-mongoose.connect(mongoUrl, err => {
+mongoose.connect(mongoUrl, (err) => {
   if (err) throw err;
   console.log("Mongodb connected...");
-  
 });
 mongoose.set("strictQuery", true);
 app.use("/api/auth", authRoutes);
@@ -42,7 +40,9 @@ app.use("/api/profile", profileRoutes);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.resolve(__dirname, "../frontend/build")));
-  app.get("*", (req, res) => res.sendFile(path.resolve(__dirname, "../frontend/build/index.html")));
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"))
+  );
 }
 
 const port = process.env.PORT || 5000;
