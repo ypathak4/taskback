@@ -10,7 +10,7 @@ const profileRoutes = require("./routes/profileRoutes");
 const cookieParser = require("cookie-parser");
 
 
-const allowedOrigins = ["https://taskfrontend-gilt.vercel.app/"];
+const allowedOrigins = [`https://taskfrontend-gilt.vercel.app/`];
 app.use(
   cors({
     origin: (origin, callback) => {
