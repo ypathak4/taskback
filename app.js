@@ -12,16 +12,10 @@ const cookieParser = require("cookie-parser");
 app.use(cors()); 
 
 
-const allowedOrigins = [`https://taskfrontend-pokk.onrender.com/`];
+const allowedOrigins = [`https://taskfrontend-pokk.onrender.com`];
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: `https://taskfrontend-pokk.onrender.com`,
     methods: "GET, POST, PUT, DELETE, PATCH",
     credentials: true,
   })
